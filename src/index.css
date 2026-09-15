@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --bg-deep: #050914;
+  --glow-cyan: #22d3ee;
+  --glow-teal: #14b8a6;
+}
+
+body {
+  background: var(--bg-deep);
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--bg-deep);
+  overflow: hidden;
+}
+
+.mesh-bg::before,
+.mesh-bg::after {
+  content: "";
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  animation: float 18s ease-in-out infinite;
+}
+
+.mesh-bg::before {
+  background: var(--glow-cyan);
+  top: -10%;
+  left: -10%;
+}
+
+.mesh-bg::after {
+  background: var(--glow-teal);
+  bottom: -15%;
+  right: -10%;
+  animation-delay: -9s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5%, 8%) scale(1.1); }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glow-border {
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.08);
+}
